@@ -1,0 +1,238 @@
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Modelo de TCC da Universidade Tecnológica Federal do Paraná (UTFPR) - Campus Toledo
+%Baseado nas orientações do estilo abntex2 (http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf)
+%Autor: Felipe Walter Dafico Pfrimer
+%Ultima atualização: 12/03/2019
+%
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Tipo de documento ABNTEX2:
+\documentclass[12pt,openright,twoside,a4paper,
+%sumario=tradicional, % para o recomendado pela ABNT utilize sumario=abnt-6027-2012
+sumario=abnt-6027-2012,
+chapter=TITLE,  % títulos de capítulos convertidos em letras maiúsculas
+section=TITLE,  % títulos de seções convertidos em letras maiúsculas
+subsection=TITLE, % títulos de subseções convertidos em letras maiúsculas
+subsubsection=TITLE, % títulos de subsubseções em letras maiúsculas
+subsubsubsection=TITLE, % títulos de subsubsubseções em letras maiúsculas
+english,french,spanish,brazil]{abntex2}
+%Observe que a ABNT NBR 14724:2011 (seção 5.1) recomenda que os documentos sejam impressos no anverso e no verso das folhas. Isso é obtido com a opção twoside.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Pacotes para língua portuguesa do Brasil (código recomendado pelo estilo abntex2):
+\usepackage{ifxetex}
+\ifxetex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures={TeX}}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+\fi
+
+%Observação: Quando um documento é compilado com xelatex, os pacotes inputenc e fontenc não devem ser incluídos ao preâmbulo do documento. Ao invés desses pacotes, geralmente fontspec é usado. O código anterior de preâmbulo torna flexível a compilação do documento, que pode tanto ser realizada da forma tradicional com pdflatex quanto com xelatex, uma vez que inclui seletivamente os pacotes adequados para cada compilador (página 14 do link http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf).
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Informações do projeto de TCC:
+\titulo{Título do trabalho}
+\autor{Mévio Albuquerque e Caio Isoudo}
+\orientador{Prof. Tício de Oliveira}
+\coorientador{} %Deixe em branco caso não haja coorientador
+\data{2019} % Apenas o ano
+\local{Toledo} % Apenas a cidade
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Preambulo (Texto apresentado na contracapa):
+
+% Não alterar o preambulo!:
+% Se TCC 1:
+\preambulo{Projeto de Trabalho de Conclusão de Curso apresentado à disciplina de Trabalho de Conclusão de Curso 1 do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná - UTFPR Campus Toledo, como requisito parcial para a obtenção do título de Bacharel em Engenharia Eletrônica.}
+
+% Se TCC 2:
+%\preambulo{Trabalho de Conclusão de Curso apresentado à disciplina de Trabalho de Conclusão de Curso 2 do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná - UTFPR Campus Toledo, como requisito parcial para a obtenção do título de Bacharel em Engenharia Eletrônica.}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Pacotes adicionais:
+\usepackage{amssymb}
+\usepackage{tabto}
+
+\usepackage[%
+    alf,
+    abnt-emphasize=bf,
+    bibjustif,
+    recuo=0cm,
+    abnt-url-package=url,       % Utiliza o pacote url
+    abnt-refinfo=yes,           % Utiliza o estilo bibliográfico abnt-refinfo
+    abnt-etal-cite=3,
+    abnt-etal-list=3,
+    abnt-thesis-year=final
+]{abntex2cite} 
+\usepackage{graphicx}
+\usepackage{nomencl} % Para a lista abreviaturas e siglas
+\makenomenclature    % Para a lista abreviaturas e siglas
+
+% Remove o título original da Nomeclatura:
+\renewcommand{\nomname}{}
+% Modifica a separação do itens:
+\setlength{\nomitemsep}{0pt}
+\setlength{\nomlabelwidth}{2.5cm}
+% Definição do grupos:
+\RequirePackage{ifthen}
+ \renewcommand{\nomgroup}[1]{%
+     \ifthenelse{\equal{#1}{A}}{\cleardoublepage\item\makebox[0.8\linewidth]{\textbf{\uppercase{\large{Lista de Abreviaturas e Siglas}}}} \makebox[\linewidth]{}\\[0.6cm]}{%
+     \ifthenelse{\equal{#1}{S}}{\cleardoublepage\item\makebox[0.8\linewidth]{\textbf{\uppercase{\large{Lista de Símbolos}}}} \makebox[\linewidth]{}\\[0.6cm]}{}}}
+
+\usepackage{indentfirst} % Indenta o primeiro parágrafo de cada seção.
+\usepackage{multirow} % Pacote de tabulação para tabelas
+\usepackage{bm} % Define o comando \bm para cujo argumento fica em negrito, inclusive formulas matemáticas
+\usepackage{lastpage} % Usado por abntex2-fichacatalografica.tex
+\usepackage[font=small,labelfont=bf,textfont=bf]{caption} % Legendas de floats em tamanho 10pt e negrito
+\usepackage{listings} % Permite digitar códigos em Latex
+\usepackage{textcomp} % Pacote com símbolos adicionais para latex (Ex.: baht, bullet, copyright, musicalnote, onequarter, section e yen)
+\usepackage{caption} % Permite customizar a legenda de figuras e tabelas
+\usepackage{upgreek} % Utilizado para letras gregas não-itálicas
+\usepackage{lscape} % Permite rotacionar páginas, mas não os números das páginas.
+\usepackage{lipsum} % Para texto filler
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{pgfgantt}
+\usepackage[a-1b]{pdfx}
+
+\usepackage{hyperref}
+
+%insira novos pacotes aqui:
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Outras configurações:
+
+% "Por padrão, uma versão sem serifas da fonte corrente do documento é utilizada para os títulos das divisões. Você pode customizar a fonte dos títulos dos capítulos alterando os comandos como no exemplo a seguir, para que seja utilizada a fonte Computer Modern com tamanho maior do que o utilizado por padrão" (manual do abntex2).
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\large}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+% Para criação de quadros
+% Novo list of (listings) para QUADROS:
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT (não remover ou alterar) 
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+% Configuração de posicionamento padrão:
+\setfloatlocations{quadro}{hbtp}
+
+
+%\setlength\afterchapskip{\lineskip} % Espaçamento de 1,5 entre o título do capítulo e corpo do texto
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={Teste}, 
+	pdfauthor={\imprimirautor},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={abnt}{latex}{abntex}{abntex2}{livro}, 
+	colorlinks=true,       		% false: boxed links; true: colored links
+	linkcolor=blue,          	% color of internal links
+	citecolor=blue,        		% color of links to bibliography
+	filecolor=magenta,      		% color of file links
+	urlcolor=blue,
+	bookmarksdepth=4
+}
+\makeatother
+% ---
+\makeatletter
+\pdfinfo {   
+	/Title (teste)
+	/Author (teste)
+	/Subject (teste)
+	/Keywords (teste) 
+}
+\makeatother
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%Início do documento:
+\begin{document}
+    %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    % Elementos pré-textuais
+    \pretextual
+
+    % Imprime capa e pula sua numeração
+    \pagenumbering{gobble} % Remove a visualização da numeração das páginas e reinicia em 1 
+    \clearpage
+    \thispagestyle{empty}
+    \imprimircapa
+    \clearpage
+    \pagenumbering{arabic}% Numeração arábica (e reinicia em 1)
+
+    % Imprime a folha de rosto (padrão do abntex2)
+    \imprimirfolhaderosto*
+
+    % Insere a ficha catalográfica (Não utilizado pela UTFPR até o momento, manter comentado)
+    %\input{abntex2-fichacatalografica.tex}
+
+    % Insere a folha de aprovação (Obrigatório para TCC2)
+    %\input{folha-de-aprovacao.tex} % Altere o arquivo folha-de-aprovacao.tex com as informações do seu TCC
+    
+    % Insere o resumo e o abstract (Obrigatório para TCC2)
+    \input{Caps/resumo.tex} %resumo (deve conter resumo)
+
+    %Lista de figuras
+    \pdfbookmark[0]{\listfigurename}{lof}
+    \listoffigures* 
+    \cleardoublepage
+
+    %Lista de tabelas (Opcional)
+    %\listoftables
+
+    %lista de abreviaturas e siglas
+    \pdfbookmark[0]{\nomname}{lst}
+    \printnomenclature
+    \cleardoublepage
+
+    %Sumário
+    \pdfbookmark[0]{\contentsname}{toc}
+    \tableofcontents*
+    \cleardoublepage
+    
+    %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    % Elementos textuais
+    \textual
+    
+    % A estrutura deve respeitar as normas da ABNT
+    \input{Caps/orientacoes_modelo.tex} 
+    \input{Caps/cap1.tex}
+    
+    % O TCC 1 deve conter:
+    %   1 - Introdução
+    %   2 - Objetivos
+    %   3 - Justificativa
+    %   4 - Referencial teórico
+    %   5 - Materiais e métodos
+    %   6 - Resultados esperados
+    %   7 - Cronograma
+    
+    
+    % Bibliografia
+    \bibliography{references}
+    
+    \postextual
+    
+    % Apêndices:
+    \apendices
+    \input{Apendices/apendice_1.tex}
+    
+    % Anexos:
+    \anexos
+    \input{Anexos/anexo_1.tex}
+    
+\end{document}
