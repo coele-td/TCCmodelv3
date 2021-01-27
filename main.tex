@@ -6,7 +6,7 @@
 %
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Tipo de documento ABNTEX2:
-\documentclass[12pt,openright,twoside,a4paper,
+\documentclass[12pt,openright,oneside,a4paper,
 %sumario=tradicional, % para o recomendado pela ABNT utilize sumario=abnt-6027-2012
 sumario=abnt-6027-2012,
 chapter=TITLE,  % títulos de capítulos convertidos em letras maiúsculas
@@ -33,12 +33,16 @@ english,french,spanish,brazil]{abntex2}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Informações do projeto de TCC:
 \titulo{Título do trabalho}
+\newcommand{\tituloingles}{Título do trabalho em inglês}
 \autor{Mévio Albuquerque e Caio Isoudo}
 \orientador{Prof. Tício de Oliveira}
 \coorientador{} %Deixe em branco caso não haja coorientador
 \data{2019} % Apenas o ano
 \local{Toledo} % Apenas a cidade
 
+% Insira aqui até cinco palavras chave separadas por ponto. Faça o mesmo para as palavras em inglês. As palavras chave serão automaticamente inseridas no resumo e abstract
+\newcommand{\palavraschave}{Palavra 1. Palavra 2. Palavra 3.}
+\newcommand{\keywords}{Palavra 1. Palavra 2. Palavra 3.}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Preambulo (Texto apresentado na contracapa):
 
@@ -94,7 +98,8 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage{pgfgantt}
-\usepackage[a-1b]{pdfx}
+
+\usepackage[a-1b]{pdfx} % para imprimir em PDFA
 
 \usepackage{hyperref}
 
@@ -134,31 +139,16 @@ english,french,spanish,brazil]{abntex2}
 
 % informações do PDF
 \makeatletter
-\hypersetup{
-	%pagebackref=true,
-	pdftitle={Teste}, 
-	pdfauthor={\imprimirautor},
-	pdfsubject={\imprimirpreambulo},
-	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={abnt}{latex}{abntex}{abntex2}{livro}, 
-	colorlinks=true,       		% false: boxed links; true: colored links
-	linkcolor=blue,          	% color of internal links
-	citecolor=blue,        		% color of links to bibliography
-	filecolor=magenta,      		% color of file links
-	urlcolor=blue,
-	bookmarksdepth=4
-}
-\makeatother
-% ---
-\makeatletter
 \pdfinfo {   
-	/Title (teste)
-	/Author (teste)
-	/Subject (teste)
-	/Keywords (teste) 
+	/Title (\imprimirtitulo)
+	/Author (\imprimirautor)
+	/Subject (\imprimirpreambulo)
+	/Keywords (\palavraschave) 
 }
 \makeatother
 
+% Configurações da folha de Rosto
+\input{folha-de-rosto}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Início do documento:
 \begin{document}

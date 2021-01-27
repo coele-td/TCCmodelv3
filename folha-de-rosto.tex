@@ -1,0 +1,46 @@
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+		
+		{\ABNTEXchapterfont\large\imprimirautor}
+		
+		
+		\vspace*{\fill}\vspace*{\fill}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo \\
+			\ABNTEXchapterfont\large\tituloingles
+		\end{center}
+		\vspace*{\fill}
+		
+		\abntex@ifnotempty{\imprimirpreambulo}{%
+			\hspace{.45\textwidth}
+			\begin{minipage}{.5\textwidth}
+				\SingleSpacing
+				\imprimirpreambulo
+			\end{minipage}%
+			\vspace*{\fill}
+		}%
+
+	{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+	
+		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
+		\abntex@ifnotempty{\imprimircoorientador}{%
+			{\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+		}%
+		\vspace*{\fill}
+		
+		{\large\imprimirlocal}
+		\par
+		{\large\imprimirdata}
+		\vspace*{1cm}
+		
+		\begin{minipage}{.25\textwidth}
+			\includegraphics{Cc-by-nc_icon}\\
+			\href{https://creativecommons.org/licenses/by-nc/4.0/}{4.0 Internacional}
+		\end{minipage}%
+		\begin{minipage}{.75\textwidth}
+			Esta licença permite que outros remixem, adaptem e criem a partir do trabalho licenciado para fins não comerciais, com crédito atribuído ao autor. Os usuários não têm que licenciar os trabalhos derivados sob os mesmos termos estabelecidos pelo autor do trabalho original.
+		\end{minipage}
+	\end{center}
+}
+\makeatother
