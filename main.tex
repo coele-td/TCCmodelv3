@@ -2,8 +2,16 @@
 %Modelo de TCC da Universidade Tecnológica Federal do Paraná (UTFPR) - Campus Toledo
 %Baseado nas orientações do estilo abntex2 (http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf)
 %Autor: Felipe Walter Dafico Pfrimer
-%Ultima atualização: 12/03/2019
+%Ultima atualização: 04/06/2021
 %
+% Instruções: 
+%	1 - Compile o modelo original;
+%	2 - Leia o capítulo 1 do pdf;
+%	3 - Acrescente seu texto, procurando organizar os capítulos nas pastas Caps;
+%	4 - Se houver, procure organizar os apêndices na pasta Apendices;
+%	5 - Se houver, procure organizar os anexos na pasta Anexos;
+%	6 - Descomente a linha "\usepackage[a-1b]{pdfx}" para gerar a versão final em PDFA
+
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Tipo de documento ABNTEX2:
 \documentclass[12pt,openright,oneside,a4paper,
@@ -31,27 +39,13 @@ english,french,spanish,brazil]{abntex2}
 %Observação: Quando um documento é compilado com xelatex, os pacotes inputenc e fontenc não devem ser incluídos ao preâmbulo do documento. Ao invés desses pacotes, geralmente fontspec é usado. O código anterior de preâmbulo torna flexível a compilação do documento, que pode tanto ser realizada da forma tradicional com pdflatex quanto com xelatex, uma vez que inclui seletivamente os pacotes adequados para cada compilador (página 14 do link http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf).
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%Informações do projeto de TCC:
-\titulo{Título do trabalho}
-\newcommand{\tituloingles}{Título do trabalho em inglês}
-\autor{Mévio Albuquerque e Caio Isoudo}
-\orientador{Prof. Tício de Oliveira}
-\coorientador{} %Deixe em branco caso não haja coorientador
-\data{2019} % Apenas o ano
-\local{Toledo} % Apenas a cidade
+% Informações do TCC: Editar o arquivo info_tcc.tex com todas as informações do TCC
+\input{info_tcc}
 
-% Insira aqui até cinco palavras chave separadas por ponto. Faça o mesmo para as palavras em inglês. As palavras chave serão automaticamente inseridas no resumo e abstract
-\newcommand{\palavraschave}{Palavra 1. Palavra 2. Palavra 3.}
-\newcommand{\keywords}{Palavra 1. Palavra 2. Palavra 3.}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%Preambulo (Texto apresentado na contracapa):
-
-% Não alterar o preambulo!:
-% Se TCC 1:
-\preambulo{Projeto de Trabalho de Conclusão de Curso apresentado à disciplina de Trabalho de Conclusão de Curso 1 do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná - UTFPR Campus Toledo, como requisito parcial para a obtenção do título de Bacharel em Engenharia Eletrônica.}
-
-% Se TCC 2:
-%\preambulo{Trabalho de Conclusão de Curso apresentado à disciplina de Trabalho de Conclusão de Curso 2 do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná - UTFPR Campus Toledo, como requisito parcial para a obtenção do título de Bacharel em Engenharia Eletrônica.}
+% Não alterar o preambulo!
+% TCC 2:
+\preambulo{Trabalho de Conclusão de Curso apresentado à disciplina de Trabalho de Conclusão de Curso 2 do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná - UTFPR Campus Toledo, como requisito parcial para a obtenção do título de Bacharel em Engenharia Eletrônica.}
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Pacotes adicionais:
@@ -99,7 +93,7 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{listings}
 \usepackage{pgfgantt}
 
-\usepackage[a-1b]{pdfx} % para imprimir em PDFA
+%\usepackage[a-1b]{pdfx} % para imprimir em PDFA
 
 \usepackage{hyperref}
 
@@ -152,8 +146,14 @@ english,french,spanish,brazil]{abntex2}
 }
 \makeatother
 
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 % Configurações da folha de Rosto
 \input{folha-de-rosto}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Configurações da Capa
+\input{capa}
+
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Início do documento:
 \begin{document}
@@ -176,10 +176,10 @@ english,french,spanish,brazil]{abntex2}
     %\input{abntex2-fichacatalografica.tex}
 
     % Insere a folha de aprovação (Obrigatório para TCC2)
-    %\input{folha-de-aprovacao.tex} % Altere o arquivo folha-de-aprovacao.tex com as informações do seu TCC
+    \input{folha-de-aprovacao.tex} % Altere o arquivo folha-de-aprovacao.tex com as informações do seu TCC
     
     % Insere o resumo e o abstract (Obrigatório para TCC2)
-    \input{Caps/resumo.tex} %resumo (deve conter resumo)
+    \input{resumo.tex} %resumo (deve conter resumo)
 
     %Lista de figuras
     \pdfbookmark[0]{\listfigurename}{lof}
